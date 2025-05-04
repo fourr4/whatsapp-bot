@@ -22,7 +22,14 @@ const CONFIG = {
       headless: true,
       args: ["--no-sandbox", "--disable-setuid-sandbox"],
       executablePath:
-        "/Applications/Google Chrome Canary.app/Contents/MacOS/Google Chrome Canary",
+        process.env.CHROME_EXECUTABLE_PATH ||
+        (process.platform === "darwin"
+          ? "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" ||
+            "/Applications/Chromium.app/Contents/MacOS/Chromium"
+          : process.platform === "linux"
+          ? "/usr/bin/google-chrome" ||
+            "/usr/bin/chromium-browser || /usr/bin/chromium"
+          : undefined),
     },
   },
   GROUPS_FILE_PATH: path.join(__dirname, "whatsapp_groups.json"),
