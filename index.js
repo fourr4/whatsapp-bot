@@ -27,7 +27,7 @@ const CONFIG = {
           ? "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" ||
             "/Applications/Chromium.app/Contents/MacOS/Chromium"
           : process.platform === "linux"
-          ? "/usr/bin/chromium"
+          ? "/usr/bin/google-chrome"
           : undefined),
     },
   },
