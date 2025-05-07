@@ -1,0 +1,32 @@
+version: '3.8'
+
+services:
+  rabbitmq:
+    image: rabbitmq:3-management
+    container_name: rabbitmq
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    environment:
+      - RABBITMQ_DEFAULT_USER=${RABBITMQ_USERNAME:-shopeeweb}
+      - RABBITMQ_DEFAULT_PASS=${RABBITMQ_PASSWORD:-shopeeweb}
+    volumes:
+      - rabbitmq_data:/var/lib/rabbitmq
+
+  whatsapp-web:
+    build: .
+    container_name: whatsapp-web
+    depends_on:
+      - rabbitmq
+    environment:
+      - RABBITMQ_HOST=rabbitmq
+      - QUEUE_NAME=${QUEUE_NAME:-whatsapp_messages}
+      - CHROME_EXECUTABLE_PATH=/usr/bin/google-chrome
+    volumes:
+      - ./.wwebjs_auth:/app/.wwebjs_auth
+      - ./whatsapp_groups.json:/app/whatsapp_groups.json
+    ports:
+      - "3000:3000"
+
+volumes:
+  rabbitmq_data:

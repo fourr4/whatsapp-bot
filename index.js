@@ -117,6 +117,12 @@ class WhatsAppClient {
    * @param {string|null} image - Base64 encoded image
    */
   async sendMessage(number, text, image = null) {
+    // Skip messages containing '70.0'
+    if (text && text.includes("70.0")) {
+      console.log(`Skipping message containing '70.0': ${text}`);
+      return;
+    }
+
     const formattedNumber = this.formatPhoneNumber(number);
 
     if (image) {

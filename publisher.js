@@ -75,9 +75,15 @@ async function main() {
   const imageBase64 = imageToBase64(imagePath);
 
   // Buat pesan untuk dikirim ke grup WhatsApp
+  // const message = {
+  //   wa_number: "120363418805481164@g.us", // ID grup WhatsApp
+  //   text: "test12233", // Teks pesan
+  //   image: imageBase64, // Data gambar dalam format base64
+  // };
+
   const message = {
-    wa_number: "120363418805481164@g.us", // ID grup WhatsApp
-    text: "test12233", // Teks pesan
+    wa_number: "6289523804019",
+    text: "gilammahallllll", // Teks pesan
     image: imageBase64, // Data gambar dalam format base64
   };
 
