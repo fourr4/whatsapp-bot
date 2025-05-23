@@ -128,8 +128,12 @@ client.on("message", async (message) => {
 
     const body = message.body.trim();
 
-    if (body.startsWith("!ta-progress ")) {
-      const progressMessage = body.substring("!ta-progres ".length).trim();
+    if (body.toLowerCase().includes("!ta-progres")) {
+      const progressMessage = body
+        .substring(
+          body.toLowerCase().indexOf("!ta-progres") + "!ta-progres".length
+        )
+        .trim();
       if (progressMessage) {
         try {
           await db.addProgress(senderName, senderNumber, progressMessage);
