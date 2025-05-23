@@ -34,7 +34,7 @@ const CONFIG = {
     },
   },
   // Ambil TARGET_GROUP_ID dari environment variable, dengan fallback
-  TARGET_GROUP_ID: process.env.TARGET_GROUP_ID || "GROUP_ID_ANDA@g.us", // PENTING: Ganti fallback ini atau set via .env
+  TARGET_GROUP_ID: process.env.TARGET_GROUP_ID || "120363418805481164@g.us", // PENTING: Ganti fallback ini atau set via .env
   CRON_DAILY_REMINDER: process.env.CRON_DAILY_REMINDER || "0 9 * * *", // Default jam 9 pagi setiap hari
   TIMEZONE_CRON: process.env.TIMEZONE_CRON || "Asia/Jakarta",
 };

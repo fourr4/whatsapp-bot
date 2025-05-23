@@ -24,7 +24,7 @@ const CONFIG = {
       executablePath:
         process.env.CHROME_EXECUTABLE_PATH ||
         (process.platform === "darwin"
-          ? "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" ||
+          ? "/Applications/Google Chrome Canary.app/Contents/MacOS/Google Chrome Canary" ||
             "/Applications/Chromium.app/Contents/MacOS/Chromium"
           : process.platform === "linux"
           ? "/usr/bin/google-chrome"
