@@ -19,7 +19,7 @@ const CONFIG = {
       executablePath:
         process.env.CHROME_EXECUTABLE_PATH ||
         (process.platform === "darwin" // macOS
-          ? "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
+          ? "/Applications/Google Chrome Canary.app/Contents/MacOS/Google Chrome Canary"
           : process.platform === "linux" // Linux
           ? "/usr/bin/google-chrome" // Path umum, bisa berbeda
           : undefined), // Windows biasanya tidak perlu path eksplisit jika Chrome diinstal standar

@@ -27,14 +27,14 @@ const CONFIG = {
       executablePath:
         process.env.CHROME_EXECUTABLE_PATH ||
         (process.platform === "darwin"
-          ? "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
+          ? "/Applications/Google Chrome Canary.app/Contents/MacOS/Google Chrome Canary"
           : process.platform === "linux"
           ? "/usr/bin/google-chrome"
           : undefined),
     },
   },
   // Ambil TARGET_GROUP_ID dari environment variable, dengan fallback
-  TARGET_GROUP_ID: process.env.TARGET_GROUP_ID || "120363418805481164@g.us", // PENTING: Ganti fallback ini atau set via .env
+  TARGET_GROUP_ID: process.env.TARGET_GROUP_ID || "120363354858071561@g.us", // PENTING: Ganti fallback ini atau set via .env
   CRON_DAILY_REMINDER: process.env.CRON_DAILY_REMINDER || "0 9 * * *", // Default jam 9 pagi setiap hari
   TIMEZONE_CRON: process.env.TIMEZONE_CRON || "Asia/Jakarta",
 };
@@ -128,7 +128,7 @@ client.on("message", async (message) => {
 
     const body = message.body.trim();
 
-    if (body.startsWith("!ta-progres ")) {
+    if (body.startsWith("!ta-progress ")) {
       const progressMessage = body.substring("!ta-progres ".length).trim();
       if (progressMessage) {
         try {
@@ -144,7 +144,7 @@ client.on("message", async (message) => {
       } else {
         message.reply("Format salah. Gunakan: !ta-progres {isi progres Anda}");
       }
-    } else if (body.toLowerCase() === "!check-progress") {
+    } else if (body.toLowerCase() === "!check") {
       // Dibuat case-insensitive
       try {
         const allProgress = await db.getAllProgress(); // Asumsi ini mengembalikan array
@@ -176,6 +176,14 @@ client.on("message", async (message) => {
         console.error("Gagal mengambil progres:", error);
         message.reply("Terjadi kesalahan saat mengambil progres. 🙁");
       }
+    } else if (body.toLowerCase() === "!help") {
+      const helpMessage =
+        "🛠 *Daftar Perintah Bot* 🛠\n\n" +
+        "• *!ta-progres {pesan}* - Simpan progres harian Anda\n" +
+        "• *!check* - Lihat semua progres yang tersimpan\n" +
+        "• *!help* - Tampilkan daftar perintah ini\n\n" +
+        "Semangat mengerjakan tugas akhir! 💪";
+      message.reply(helpMessage);
     }
   }
 });
